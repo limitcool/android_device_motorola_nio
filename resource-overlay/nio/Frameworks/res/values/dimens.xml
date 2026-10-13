@@ -11,4 +11,10 @@
 
     <!-- Default radius of the software rounded corners. -->
     <dimen name="rounded_corner_radius">105px</dimen>
+
+    <!-- Navigation bar height to properly align 3-button navigation -->
+    <dimen name="navigation_bar_height">48dp</dimen>
+    <dimen name="navigation_bar_height_landscape">48dp</dimen>
+    <dimen name="navigation_bar_frame_height">48dp</dimen>
+    <dimen name="navigation_bar_frame_height_landscape">48dp</dimen>
 </resources>
