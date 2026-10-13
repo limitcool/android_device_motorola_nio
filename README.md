@@ -82,35 +82,32 @@ m bacon -j$(nproc)
 
 ## Flashing Instructions
 
-### Prerequisites
-1. Unlocked Bootloader.
-2. Latest platform-tools (`adb` and `fastboot`).
-3. Download the ROM zip and firmware partitions from [SourceForge](https://sourceforge.net/projects/pixelos-nio/).
+> ⚠️ **IMPORTANT**: Clean flash (Format Data / Wipe) is **MANDATORY** when coming from stock ROM or another custom ROM!
 
-### Step 1: Flash Boot Partitions (Fastboot Mode)
-Reboot phone into Fastboot Mode (`Volume Down + Power`):
-```bash
-fastboot flash boot boot.img
-fastboot flash dtbo dtbo.img
-fastboot flash vendor_boot vendor_boot.img
-```
+### Scenario A: Already Have Custom Recovery (Standard Flow)
+1. Reboot phone into **Recovery Mode** (`Volume Down + Power` -> select Recovery).
+2. **Factory Reset** -> **Format data/factory reset** (Confirm wipe).
+3. Select **Apply update** -> **Apply from ADB**.
+4. Sideload the ROM zip from your PC:
+   ```bash
+   adb sideload PixelOS_-16.0-20261013-1218.zip
+   ```
+5. Once completed, select **Reboot system now**.
 
-### Step 2: Boot Recovery & Sideload
-1. On phone, use volume keys to select **Recovery Mode** and press Power to confirm.
-2. In Recovery:
-   - Select **Factory Reset** -> **Format data/factory reset** (Wipe data).
-   - Go back to main menu, select **Apply update** -> **Apply from ADB**.
-3. Sideload the ROM zip from your PC:
-```bash
-adb sideload PixelOS_nio-16.0-xxxx.zip
-```
-4. Once completed, select **Reboot system now**.
+### Scenario B: First Time Flashing from Stock Motorola ROM
+*Only needed once to install custom recovery on stock devices:*
+1. Boot into Fastboot Mode (`Volume Down + Power`).
+2. Flash recovery kernel:
+   ```bash
+   fastboot flash boot boot.img
+   ```
+3. Reboot to **Recovery Mode**, then follow **Scenario A** (Format Data -> Sideload).
 
 ---
 
 ## Downloads & Links
 
-- **ROM Releases**: [SourceForge - PixelOS for Moto G100](https://sourceforge.net/projects/pixelos-nio/)
+- **ROM Package**: [SourceForge - PixelOS for Moto G100](https://sourceforge.net/projects/pixelos-nio/files/)
 - **XDA Discussion Thread**: Coming Soon on XDA Developers
 
 ---
